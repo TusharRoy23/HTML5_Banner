@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://code.jquery.com/jquery-2.2.4.js"
+          integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+          crossorigin="anonymous"></script>
+          <link rel="stylesheet" href="/diva/css/bootstrap.min.css">
+          <link href='//fonts.googleapis.com/css?family=Alegreya Sans' rel='stylesheet'>
+	</head>
+	<body>
+		<div style="border: 1px solid black; height:480px; width:720px; margin: 0 auto; overflow:hidden; position:relative; background-image:url('bk.jpg'); font-family: 'Alegreya Sans'">
+			<div class="col-lg-12 col-md-12 col-sm-12" style="width:100%; left:-100%; position: absolute; text-align: center; " id="are_you"> <!-- are you -->
+				<h1>Are You  ?</h1>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12" style="left: -200%; position: absolute; top:17%;" id="male"> <!-- male -->
+				<h1 style="cursor: pointer;" class="gender" data-gender="male"><i class="fa fa-male fa-3x"  style=""></i></h1>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12" style="position: absolute; top:122%;" id="or"> <!-- or -->
+				<h2 style="text-align: center; ">Or</h2>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12" style="right: -10%; position: absolute; top:67%;" id="female" > <!-- female -->
+				<h1 class="gender" style="cursor: pointer;" data-gender="female"><i class="fa fa-female fa-3x" style=""></i></h1>
+			</div>
+			<div class="gender-block" data-gender="male" style="height:100%; width:100%; left:-100%; float:left; position: absolute;">
+				<button class="call-back btn btn-sm btn-success" data-gender="male">Back</button>
+
+				<h2 style="text-align: center;">Choose your color</h2>
+				<br />
+				<br />
+				<div style="text-align: center;">
+					<input type="radio" name="car" value="red"> <i class="fa fa-car fa-5x" style="color: red"></i><br /><br />
+					<input type="radio" name="car" value="aqua"> <i class="fa fa-car fa-5x" style="color: aqua"></i><br /><br />
+					<input type="radio" name="car" value="blue"> <i class="fa fa-car fa-5x" style="color: blue"></i><br /><br />
+					<button class="ok btn btn-sm btn-primary" data-gender="male">OK</button>
+				</div>
+
+			</div>
+			<div class="gender-block" data-gender="female" style="height:100%; width:100%; left:-100%; float:left; position: absolute;">
+				<button class="call-back btn btn-sm btn-success" data-gender="female">Back</button>
+
+				<h2 style="text-align: center;">Choose your color</h2>
+
+				<br />
+				<br />
+				<div style="text-align: center;">
+					<input type="radio" name="dress" value="sepia"><i style="font-size: 500%; -webkit-filter: sepia(100%); filter: sepia(100%);">&#x1f457</i><br />
+					<input type="radio" name="dress" value="gray"><i style="font-size: 500%; -webkit-filter: grayscale(100%); filter: grayscale(100%);">&#x1f457</i><br />
+					<input type="radio" name="dress" value="bright"><i style="font-size: 500%;">&#x1f457</i><br />
+					<button class="ok btn btn-sm btn-primary" data-gender="female">OK</button>
+				</div>
+			</div>
+			<div id="show_result" style="height:100%; width:100%; left:-100%; float:left; position: absolute;">
+			</div>
+			<button id="refresh" class="ok btn btn-sm btn-success" style="left:-100%; position: absolute;">Go Back</button>
+		</div>
+		<script type="text/javascript">
+			$( document ).ready(function(){
+				$('#are_you').animate({ "left" : "0px"}, "medium");
+				$('#male').animate({"left" : "30%"}, "slow");
+				$('#female').animate({"left" : "54%"}, "slow");
+				$('#or').animate({"top" : "52%"}, "slow");
+			});
+
+			$('.gender').on('click', function(e){
+				if ($(this).attr('data-gender') == 'male') {
+					$('.gender-block').each(function(i){
+						if(i==0){
+							$('#are_you').animate({ "left" : "-100%"}, "medium");
+							$('#male').animate({"left" : "-100%"}, "slow");
+							$('#female').animate({"left" : "100%"}, "slow");
+							$('#or').animate({"top" : "122%"}, "slow");
+
+							$(this).animate({ "left": "+=100%" }, "slow" );
+						}
+					});
+				}
+				else{
+					$('.gender-block').each(function(i){
+						if(i==1){
+							$('#are_you').animate({ "left" : "-100%"}, "medium");
+							$('#male').animate({"left" : "-100%"}, "slow");
+							$('#female').animate({"left" : "100%"}, "slow");
+							$('#or').animate({"top" : "122%"}, "slow");
+
+							$(this).animate({ "left": "+=100%" }, "slow" );
+						}
+					});
+				}
+			});
+
+			$('.call-back').on('click' , function(e){
+				if($(this).attr('data-gender') == 'male'){
+					$('.gender-block').each(function(i){
+						if(i == 0){
+							$('#are_you').animate({ "left" : "0px"}, "medium");
+							$('#male').animate({"left" : "30%"}, "slow");
+							$('#female').animate({"left" : "54%"}, "slow");
+							$('#or').animate({"top" : "52%"}, "slow");
+
+							$(this).animate({ "left": "-=100%" }, "medium" );
+						}
+					});
+				}
+				else{
+					$('.gender-block').each(function(i){
+						if(i == 1){
+							$('#are_you').animate({ "left" : "0px"}, "medium");
+							$('#male').animate({"left" : "30%"}, "slow");
+							$('#female').animate({"left" : "54%"}, "slow");
+							$('#or').animate({"top" : "52%"}, "slow");
+
+							$(this).animate({ "left": "-=100%" }, "medium" );
+						}
+					});
+				}
+			});
+
+			$('.ok').on('click', function(e){
+				if($(this).attr('data-gender') == 'male'){
+					//alert("male");
+					$('.gender-block').animate({'left' : '-100%'},'medium');
+					$('#show_result').animate({'left' : '10%'},'medium');
+					$('#refresh').animate({'left' : '20%'},'medium');
+					if ($('input[name=car]:checked').val() == 'red') {
+
+						document.getElementById('show_result').innerHTML = "<h3 style='text-align:center;'>You Selected Red Color</h3> <h2 style='text-align:center;'>Thank You !!!</h2><br /> <a href='https://support.google.com/dcm/partner/answer/3145300?hl=en' class='btn btn-lg btn-primary' style='text-align:center' target='_blank'>Google</a>";
+					}
+					else if ($('input[name=car]:checked').val() == 'aqua') {
+						document.getElementById('show_result').innerHTML = "<h3 style='text-align:center;'>You Selected Aqua Color</h3> <h2 style='text-align:center;'>Thank You !!!</h2><br /> <a href='https://support.google.com/dcm/partner/answer/3145300?hl=en' class='btn btn-lg btn-primary' style='text-align:center' target='_blank'>Google</a>";
+					}
+					else{
+						document.getElementById('show_result').innerHTML = "<h3 style='text-align:center;'>You Selected Blue Color</h3> <h2 style='text-align:center;'>Thank You !!!</h2><br /> <a href='https://support.google.com/dcm/partner/answer/3145300?hl=en' class='btn btn-lg btn-primary' style='text-align:center' target='_blank'>Google</a>";
+					}
+				}
+				else{
+					$('.gender-block').animate({'left' : '-100%'},'medium');
+					$('#show_result').animate({'left' : '10%'},'medium');
+					$('#refresh').animate({'left' : '20%'},'medium');
+					if ($('input[name=dress]:checked').val() == 'sepia') {
+
+						document.getElementById('show_result').innerHTML = "<h3 style='text-align:center;'>You Selected Sepia Color</h3> <h2 style='text-align:center;'>Thank You !!!</h2><br /> <a href='https://support.google.com/dcm/partner/answer/3145300?hl=en' class='btn btn-lg btn-primary' style='text-align:center' target='_blank'>Google</a>";
+					}
+					else if ($('input[name=dress]:checked').val() == 'gray') {
+						document.getElementById('show_result').innerHTML = "<h3 style='text-align:center;'>You Selected Gray Color</h3> <h2 style='text-align:center;'>Thank You !!!</h2><br /> <a href='https://support.google.com/dcm/partner/answer/3145300?hl=en' class='btn btn-lg btn-primary' style='text-align:center' target='_blank'>Google</a>";
+					}
+					else{
+						document.getElementById('show_result').innerHTML = "<h3 style='text-align:center;'>You Selected Bright Color</h3> <h2 style='text-align:center;'>Thank You !!!</h2><br /> <a href='https://support.google.com/dcm/partner/answer/3145300?hl=en' class='btn btn-lg btn-primary' style='text-align:center' target='_blank'>Google</a>";
+					}
+				}
+			});
+
+			$('#refresh').on('click', function(e){
+				document.getElementById('show_result').innerHTML = '';
+				$('.gender-block').animate({'left' : '-100%'},'fast');
+				$('#show_result').animate({'left' : '-100%'},'fast');
+				$('#refresh').animate({'left' : '-120%'},'fast');
+
+				$('#are_you').animate({ "left" : "0px"}, "medium");
+				$('#male').animate({"left" : "30%"}, "slow");
+				$('#female').animate({"left" : "54%"}, "slow");
+				$('#or').animate({"top" : "52%"}, "slow");				
+			 });
+		</script>
+	</body>
+</html>
